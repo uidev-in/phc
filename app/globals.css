@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer components {
+  .slick-image-center .slick-track {
+    @apply !flex;
+  }
+
+  .slick-image-center .slick-slide {
+    height: inherit !important;
+  }
+
+  .slick-image-center .slick-slide > div {
+    @apply flex h-full;
+  }
+
+  a.addeventatc {
+    @apply !shadow-none !block !p-0 !border-none !rounded-none !mr-2 !rounded-br-lg !bg-[#EAEAEA] !z-10;
+  }
+
+  /* Faq */
+  .faqs {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+  }
+  .faq {
+    margin: 15px;
+    padding: 15px;
+    background: #ededed;
+  }
+  .faqs .faq .faq-question {
+    position: relative;
+    font-size: 20px;
+    padding-right: 80px;
+    transition: all 0.4s ease;
+  }
+  .faqs .faq .faq-question::after {
+    @apply inset-y-0 absolute right-0;
+    content: var(--bg-image);
+    transition: all 0.2s ease;
+  }
+
+  .faqs .faq .faq-answer {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+
+  .faqs .faq.open .faq-question {
+    margin-bottom: 15px;
+  }
+
+  .faqs .faq.open .faq-question::after {
+    @apply origin-center rotate-180;
+    content: var(--bg-image);
+  }
+
+  .faqs .faq.open .faq-answer {
+    max-height: 1000px;
+    opacity: 1;
+  }
+}
+
+.react-tabs__tab--selected {
+  border-color: white !important;
+  border-radius: 5px 5px 0 0 !important;
+  border-bottom: 5px solid #10a64a !important;
+}
